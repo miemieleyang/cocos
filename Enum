@@ -1,0 +1,19 @@
+//Enum。在编辑器内添加多种选择。
+
+//声明enum 
+
+enum BirdColor{
+        White = 2,
+        Red = 5，
+        Yellow，
+        Blue = 7，
+        Black
+}
+
+//创建property
+Const BIRDCOLOR = cc.Enum(BirdColor);
+
+@property({type:BIRDCOLOR})
+Color : BirdColor = BirdColor.Blue;
+
+//然后编辑器内就可以选择多种颜色。
