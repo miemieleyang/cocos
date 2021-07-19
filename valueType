@@ -1,0 +1,27 @@
+
+start(){
+    let a : number =10;
+    let b = this.add(10);
+    
+    console.log("b" , b); //输出 11
+    console.log("a", a); //输出 10
+    
+    let object1: any = {};
+    object1.num =20;
+    console.log("object1.num", object1.num);//输出 20
+    
+    let object2 = object1;
+    object2.num ++;
+    console.log("after add object1.num", object1.num); //输出 21
+    console.log("after add object2.num", object2.num); //输出 21
+    
+    let num1 : number = 30;
+    console.log("num1:", num1);
+    let num2 = num1;
+    num2++;
+}
+
+add(num : number) : number{
+    num = num +1;
+    return num;
+}
