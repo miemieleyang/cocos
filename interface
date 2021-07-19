@@ -1,0 +1,48 @@
+//接口
+interface IBiology{
+    name: string;
+    age: number;
+    leg?: any;
+    shout: Function;
+}
+class Cat{
+  name : string = "cat";
+  age : number;
+  leg?: any;
+  shout(){
+      console.log("myNameIs" + this.name)
+  }
+}
+
+class Dog{
+  name : string = "dog";
+  age : number;
+  leg?: any;
+  shout(){
+      console.log("myNameIs" + this.name)
+  }
+}
+
+const{ccclass, property} cc_decorator;//自动生成
+
+@ccclass
+export default class Helloworld extends cc.Component{
+    start(){
+      let cat = new Cat();
+      let dog = new Dog();
+      this.shoutAnything(cat);
+      this.shoutAnything(dog);
+    
+       Let oldCat = this.addAge(cat);
+    }
+    shoutAnything(anything : IBiology){
+        anything.shout();
+    }
+    
+    //新增一个老猫，比其他猫多一岁
+    addAge<T extends IBiology>(arg: T): T{
+        arg.age = arg.age +1;
+        arg.shout();
+        return arg;
+    }
+}
