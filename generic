@@ -1,0 +1,18 @@
+###泛型
+//T：往里传的参数，返回的就是什么参数
+
+Identity <T>(arg:T) : T {
+        Return arg;
+}
+
+export default class Helloworld extends cc.Component{
+    start(){
+        let batton = this.node.getComponent<c.button>(cc.Button);
+        this.node.getComponent(Helloworld);
+        
+        let map : Map<number, string> = new Map<number , string>();
+        map.set(6,"map6");
+        let value = map.get(6);
+        
+    }
+}
