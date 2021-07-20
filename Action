@@ -1,0 +1,11 @@
+onClick(){
+ 
+    let move = cc.moveTo(2,cc.v2(200,0)); //移动 moveTo moveBy
+    let scale = cc.scaleTo(1,2,3); //变大变小 scaleto scaleBy
+    
+    let spawn = cc.spawn(move,scale); //同时运动
+    let sequence = cc.sequence(move,scale) //先后执行
+    
+    let repeat = cc.repeat(sequence,3); //重复执行几次
+    this.nodeIcon.runAction(spawn);
+}
