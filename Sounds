@@ -1,0 +1,42 @@
+@ccclass
+export default class Sounds extends cc.Component {
+    //直接添加音频
+    
+    @property(cc.AudioSource)
+    audioSource : cc.AudioSource = null;
+    //场景步骤：创造声音新节点----添加组件----AudioSource
+    //Canvas 添加脚本，把声音节点拖入
+
+
+    //Clip是给AudioEngine添加
+    @property(cc.AudioClip)
+    audioClip : cc.AudioClip = null;
+    
+    idx : number = -1; //暂停需要坐标
+
+    // onLoad () {}
+
+    start () {
+        this.audioSource.clip = this.audioClip;
+    }
+
+
+
+    playAudioSource(){
+        this.audioSource.play();//
+    }
+
+    playAudioEngine(){
+        this.idx = cc.audioEngine.play(this.audioClip,false,1); //audioClip, 是否循环，音量大小----在Canvas内添加音效
+        
+        //使用路径音效
+        let path = cc.url.raw("resources/XXXXX");
+        
+    }
+    
+    pause(){
+        cc.audioEngine.pause(this.idx);
+    }
+}
+
+//AudioEngine 与 AudioSource 都能播放音频，它们的区别在于 AudioSource 是组件，可以添加到场景中，由编辑器设置。而 AudioEngine 是引擎提供的纯 API，只能在脚本中进行调用。
