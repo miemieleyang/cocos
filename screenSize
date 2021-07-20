@@ -1,0 +1,29 @@
+cc.Class({
+    extends : cc.Component,
+    
+    properties:{
+    
+    
+    },
+    
+    onload: function(){
+      let designSize = new cc.size(750,1334); //原始尺寸
+      let designRate = designSize.hight / designsize.width;
+      let winSize = cc.director.getWinSize();
+      let realReate winSize.height / winSize.width;
+      cc.log("realRate:", realRate);
+      cc.log("this.node.height:", this.node.height, "this.node.width:", this.node.width);
+      
+      if(realRate > designRate){
+        let scale = designRate / realRate;
+        this.node.scale = scale;
+        cc.olog("target scale" , this.node.scale);
+      }
+    },
+    
+    update : function(dt) {
+    
+    },
+    
+});
+
