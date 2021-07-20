@@ -1,0 +1,36 @@
+onload(){
+    this.node.on(cc.Node.EventType.TOUCH_START, this.onTouchStart, this)；//点击的时候触发
+    this.node.on(cc.Node.EventType.TOUCH_MOVE, this.onTouchMove, this)；// 拖动的时候触发
+    this.node.on(cc.Node.EventType.TOUCH_END, this.onTouchEnd, this)； // 鼠标不点击的时候触发
+    this.node.on(cc.Node.EventType.TOUCH_CANCEL, this.onTouchCancel, this)；// 接触点移开物体的时候触发
+}
+    cancelRegist(){
+       this.node.off(cc.Node.EventType.TOUCH_START, this.onTouchStart, this)；
+       this.node.off(cc.Node.EventType.TOUCH_MOVE, this.onTouchMove, this)；
+       this.node.off(cc.Node.EventType.TOUCH_END, this.onTouchEnd, this)； 
+       this.node.off(cc.Node.EventType.TOUCH_CANCEL, this.onTouchCancel, this)；
+    }
+
+    
+    onTouchStart(event: cc.Event.EventTouch){
+        console.log("onTouchStart");
+        let pos = this.node.converTouchToNodeSpaceAR(event.touch);
+        this.circle.position = pos;
+    }
+    
+    onTouchMove(event: cc.Event.EventMove){
+        console.log("onTouchMove");
+        let pos = this.node.converTouchToNodeSpaceAR(event.touch);
+        this.circle.position = pos;
+    }
+    
+    onTouchEnd(event: event.Event.EventEnd){
+    
+    }
+    
+    onTouchCancel(event: event.Event.EventCancel){
+    
+    }
+
+//start move,后续建立节点，挂上节点上
+//cancel 新建按钮，挂在按钮上，点击就不跟随
