@@ -1,0 +1,29 @@
+//类型转换
+class Animal{
+}
+
+class Dog extends Animal{
+    name: string;
+}
+
+const {ccclass, property} = cc._decorator;
+
+@ccclass
+export default class Helloworld extends cc.Component{
+    start(){
+        let animal = this.newAnimal();
+        
+        //this.getName(animal); 错误，只能传入dog类型
+        this.getName(animal as Dog);
+    }
+    
+    new Animal() : Animal{
+        return new Dog();
+    }
+    getName(dog : Dog){
+        console.log (dog.name);
+    }
+}
+
+//垃圾清理
+cc.sys.garbageCollect();
