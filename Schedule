@@ -1,0 +1,19 @@
+@ccclass
+export default class Schedule extends cc.Component{
+    num:number = 0;
+    
+    //定时一直打印
+    onload(){
+        this.schedule(this.log , 1, 5, 0);
+    }
+    
+    log(){
+        console.log(this.num++);
+    }
+    
+    
+    //新建按钮，一按就停止打印
+    cancellLog(){
+        this.unschedule(this.log);
+    }
+}
