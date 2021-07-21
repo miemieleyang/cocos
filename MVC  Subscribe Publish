@@ -1,0 +1,75 @@
+export default class EventCenter{
+    private static events: Map<string, Array<EventHandler>> = new Map<string, Array<EventHandler>>;
+   
+    static registEvent(eventName:string, callBack: Function, target: object) : void{
+        if(eventName == undefined || callback == undefined || target == undefined){
+            throw Error{"regist event error"};
+        }
+        if(EventCenter.events[eventName] == undefined){
+            EventCenter.events[eventName ] = new Array<EventHandler>();
+            
+        }
+        
+        let handler = new EventHandler(target, callBack);
+        EventCenter.events[eventname].push(handler);
+       
+    }
+    
+    //触发事件
+    static postEvent(eventname: string, param?: any){
+        let handlers = EventCenter.events[eventname];
+        if(handlers == undefined){
+            return;
+        }
+        
+        console.log("post Event", eventname);
+        
+        for(let i =0; i< handlers.length ;i++){
+            let hander = handlers[i];
+            if(handler){
+                try{
+                  handler.function.call(handler.target, param);
+                }catch(e){
+                    console.log(e.message);
+                    console.log(e.stack.toString);
+                }
+            }
+           
+        }
+    }
+}
+
+
+class EventHandler{
+    target: object;
+    function : Function;
+
+    constructor(target: object, func: Function){
+        this.target= target;
+        this.function = func;
+    }
+}
+
+
+//另一个类中
+onButtonClick(){
+    EventCenter.postEvent("gameStart","game Started");
+}
+
+//新建一个类Panel
+
+@property(cc.Label)
+lb:cc.Label;
+
+onLoad(){
+    EventCenter.registEvent("gameStart",thisonGameStart, this);
+}
+
+onGameStart(str: string){
+    this.lb.string = str;
+}
+
+
+
+
+
