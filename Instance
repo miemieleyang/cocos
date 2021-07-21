@@ -1,0 +1,38 @@
+export default class Instance{
+  private static _instance : Instance = null;
+  
+  public static getInstance(): Instance{
+    if(Instance. _instance == null){
+        Instance._instance = new Instance();
+    }
+    
+    return Instance._instance;
+  }
+  
+  constructor(){
+    if(Instance._instance != nukk){
+        throw Error("Already has one");
+    }
+  } 
+  
+  num : number =0;
+  
+  trace(){
+    this.num++;
+    console.log("trace: ", this.num);
+  }
+}
+
+
+///helloWorld类
+
+export default class Helloworld extends cc.Componet{
+    start(){
+        this.label.string = this.text;
+        Instance.getInstance().trace();
+    }
+    
+    update(){
+        Instance.getInstance().trace();
+    }
+}
