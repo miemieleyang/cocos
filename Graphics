@@ -1,0 +1,19 @@
+@property(cc.Graphics)
+ctx : cc.Graphics = null;
+
+onLoad(){
+  console.log("graphicsBegin");
+  
+  this.ctx.move(0,0);
+  
+  this.ctx.lineTo(100,0);
+  this.ctx.lineTo(100,100);
+  
+  this.ctx.fill(); //填充
+  this.ctx.stroke(); //画线条必须用到的方法
+  
+}
+
+clear(){
+  this.ctx.clear();
+}
