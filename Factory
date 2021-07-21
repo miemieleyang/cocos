@@ -1,0 +1,49 @@
+
+
+interface IAction{
+    attack: Function;
+    die : Function;
+}
+
+export class Thief implements IAction{
+    attack (){
+        console.log("Thief Attack");
+    }
+
+    die(){
+        console.log("Thief Die");
+    }
+}
+
+export class Warrior implements IAction{
+    attack(){
+        console.log("Warrior attack")
+    }
+
+    die(){
+        console.log("Warrior Die");
+    }
+}
+
+export function createAttack <T extends IAction>(c:{new (): T}) : T{
+    let object = new c();
+    object.attack;
+    return object;
+}
+
+export function createDie <T extends IAction>(c:{new (): T}) : T{
+    let object = new c();
+    object.die;
+    return object;
+}
+
+
+
+
+//hello world类中调用
+
+onLoad() {
+
+        createAttack<Thief>(Thief);//工厂模式
+        createAttack<Warrior>(Warrior);
+    }
