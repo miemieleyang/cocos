@@ -1,0 +1,13 @@
+//Animation 动画：
+//创建一个Sprite，打开时间轴，新建文件夹保存. add property类型Sprite Frame 
+//把图片拖进Sprite内，同时调节时间轴，设置成Loop
+
+animation : cc.Animation = null;
+
+onload(){
+    this.animation = this.getComponent<cc.Animation>(Animation);
+}
+
+play(){
+    this.animation.play()
+}
