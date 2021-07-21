@@ -1,0 +1,33 @@
+//资源加载
+
+@property(cc.Sprite)
+sp: cc.Sprite = null;
+
+//加载网络资源
+onLoad(){
+  cc.loader.load({url:"http://www.XXXXXXX.png", type: "png"},
+  function(err. texture : cc.Texture2D){
+    if(err){
+      console.log(err);
+    }
+    if(texture){
+      let spriteFrame = new cc.SpriteFram(texture, cc.rect(0, 0, texture.pixeWidth, txture.pixeHight));
+      this.sp.spriteFrame = spriteFrame;
+    }
+
+  }.bind(this));
+}
+
+
+//加载本地资源
+//先把资源放到resourcre内
+onLoad(){
+  cc.leader.leadRed("文件名", cc.SpriteFrame, function(error: Error, spFrame : cc.spriteFrame){
+    if(){
+      console.log(error);
+    }
+    if(spFrame){
+      this.sp.spriteFrame = spFrame;
+    }
+  }.bind(this));
+}
