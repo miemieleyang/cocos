@@ -1,0 +1,35 @@
+//对象池模式
+
+const {ccclass, property} = cc._decorator;
+
+@ccclass
+export default class Pool extends cc.Component {
+
+    @property(cc.Node)
+    nodeIcon : cc.Node = null;
+    
+    pool : cc.Node[] = [];
+
+    update (dt) {
+        this.shoot();
+    }
+
+    shoot(){
+        let node = this.getNode();
+        node.runAction(cc.sequence(cc.moveBy(1,0,200),cc.removeSelf(),cc.callFunc(function (){
+            this.pool.push(node);
+        }.bind(this))));
+        node.parent = this.node;
+    }
+
+    //对象池
+    getNode(): cc.Node{
+        if (this.pool >0){
+            let node = this.pool.shift();
+            node.position = cc.Vec2.ZERO;
+            return node;
+        }else {
+            return cc.instantiate(this.nodeIcon);
+        }
+    }
+}
